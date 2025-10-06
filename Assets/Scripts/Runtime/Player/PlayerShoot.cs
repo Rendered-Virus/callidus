@@ -9,6 +9,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private float _maxProjectileTime;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private GameObject _swords;
+    [SerializeField] private int _damage;
     
     private PlayerMovement _playerMovement;
     private bool _emptyHand;
@@ -37,8 +38,9 @@ public class PlayerShoot : MonoBehaviour
         var rot = _playerMovement.IsFacingRight() ? 0 : 180; 
         var pro = Instantiate(_projectilePrefab,_shootPoint.position,_shootPoint.rotation * Quaternion.Euler(0, rot, 0));
         var target = _camera.ScreenToWorldPoint(Input.mousePosition);
-        
-        pro.Embark(_projectileShootSpeed, _projectileUpdateTime,target, _maxProjectileTime,this);
+        target.z = 0;
+        print(target);        
+        pro.Embark(_projectileShootSpeed, _projectileUpdateTime,target, _maxProjectileTime,_damage,this);
     }
     private bool CanAttack()
     {

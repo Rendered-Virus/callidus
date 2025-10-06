@@ -27,10 +27,10 @@ public class PlayerMovement : MonoBehaviour
    private bool _jumpedOnce;
    private bool _isFacingRight;
 
-
    private void Awake()
    {
       _rigidbody2D = GetComponent<Rigidbody2D>();
+      _animator.SetBool("Begin",true);
    }
    
    private void FixedUpdate()

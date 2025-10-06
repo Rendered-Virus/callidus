@@ -11,13 +11,15 @@ public class SwordProjectile : MonoBehaviour
     private PlayerShoot _sender;
     private float _maxTime;
     private bool _canReturn;
+    private int _damage;
 
-    public void Embark(float speed, float updateTime, Vector3 target,float maxTime, PlayerShoot sender)
+    public void Embark(float speed, float updateTime, Vector3 target,float maxTime,int damage, PlayerShoot sender)
     {
         _speed = speed;
         _updateTime = updateTime;
         _sender = sender;
         _maxTime = maxTime;
+        _damage = damage;
         
         var dir =  (target- transform.position).normalized;
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -64,5 +66,11 @@ public class SwordProjectile : MonoBehaviour
     private bool TouchPlayer()
     {
         return Vector2.Distance(transform.position, _sender.transform.position) < 2.5f;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.TryGetComponent<BossHealth>(out var bossHealth))
+            bossHealth.TakeDamage(_damage);
     }
 }
