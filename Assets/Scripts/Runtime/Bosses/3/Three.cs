@@ -11,6 +11,7 @@ public class Three : MonoBehaviour
    [SerializeField] private Bullet _bulletPrefab;
    [SerializeField] private Transform _shootPoint;
    [SerializeField] private int _numberOfShots;
+   [SerializeField] private int _damage;
    [SerializeField] private Vector2 _teleportRadius;
    [SerializeField] private Vector2 _teleportRangeX;
    [SerializeField] private float _bulletSpeed;
@@ -20,9 +21,10 @@ public class Three : MonoBehaviour
    public Transform target;
    private Rigidbody2D _rigidbody;
    private Animator _animator;
-
+   private TrailRenderer _trailRenderer;
    private void Start()
    {
+      _trailRenderer = GetComponentInChildren<TrailRenderer>();
       _animator = GetComponent<Animator>();
       _rigidbody = GetComponent<Rigidbody2D>();
    }
@@ -35,6 +37,8 @@ public class Three : MonoBehaviour
    private IEnumerator ShootCoroutine()
    {
       _rigidbody.bodyType = RigidbodyType2D.Kinematic;
+      _trailRenderer.enabled = true;
+      
       for (int i = 0; i < _numberOfShots; i++)
       {
          var pos = target.position + new Vector3(Random.insideUnitCircle.normalized.x * _teleportRadius.x,Random.value * _teleportRadius.y + 3); 
@@ -45,7 +49,7 @@ public class Three : MonoBehaviour
          
             transform.right = dir;
 
-            Instantiate(_bulletPrefab, _shootPoint.position, _shootPoint.rotation).Embark(dir * _bulletSpeed);
+            Instantiate(_bulletPrefab, _shootPoint.position, _shootPoint.rotation).Embark(dir * _bulletSpeed,_damage);
          });
          yield return new WaitForSeconds(_timeBetweenShots);
          
@@ -54,7 +58,7 @@ public class Three : MonoBehaviour
       transform.position = new Vector3(Random.Range(_teleportRangeX.x, _teleportRangeX.y),Random.value * _teleportRadius.y);
       transform.right = target.position.x > transform.position.x ? Vector3.right : Vector3.left;
       _rigidbody.bodyType = RigidbodyType2D.Dynamic;
-      
+      _trailRenderer.enabled = false;
       yield return new  WaitForSeconds(1f);
       
       _animator.CrossFade("Idle",0);

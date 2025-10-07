@@ -7,10 +7,8 @@ public class GameManager : Singleton<GameManager>
 {
    public UnityEvent OnFightBegin;
    public bool FightBegin = false;
-   private IEnumerator Start()
+   private void Start()
    {
-      yield return new WaitForSeconds(2);
-      OnFightBegin?.Invoke();
-      FightBegin = true;
+      OnFightBegin.AddListener(()=> FightBegin = true);      
    }
 }

@@ -1,10 +1,21 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerIntro : MonoBehaviour
 {
+    [SerializeField] private float _introRunTime;
+    [SerializeField] private float _introEndPointX;
     private void Start()
+    {
+        ComponentHandling();
+        
+        var anim = GetComponent<Animator>();
+        transform.DOMoveX(_introEndPointX,  _introRunTime).OnComplete(()=> anim.SetTrigger("Begin"));
+    }
+
+    private void ComponentHandling()
     {
         var components = new List<MonoBehaviour>();
         
@@ -21,6 +32,6 @@ public class Player : MonoBehaviour
         {
             foreach(var component in components)
                 component.enabled = true;
-        });
+        }); 
     }
 }

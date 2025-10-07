@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-   public void Embark(Vector3 velocity)
+   private int _damage;
+
+   public void Embark(Vector3 velocity, int damage)
    {
       GetComponent<Rigidbody2D>().linearVelocity =  velocity;
+      _damage = damage;
    }
 
    private void OnTriggerEnter2D(Collider2D other)
    {
-      
+      if (other.TryGetComponent<PlayerHealth>(out var playerHealth))
+      {
+         playerHealth.TakeDamage(_damage);
+      }
    }
 }
