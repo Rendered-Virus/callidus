@@ -7,8 +7,12 @@ public class PlayerHealth : Health
     [SerializeField] private float _pauseDuration;
     [SerializeField] private float _timeRestoreDuration;
     [SerializeField] private float _timeRestoreDeltaTime;
+
+    [SerializeField] private float _invincibilityDuration;
     
     private DamageFlash _damageFlash;
+    private bool _invincibility;
+
     protected override void Start()
     {
         base.Start();
@@ -17,6 +21,8 @@ public class PlayerHealth : Health
 
     public override void TakeDamage(int damage)
     {
+        if(_invincibility) return;
+                    
         _currentHealth -= damage;
         StopAllCoroutines();
         StartCoroutine(UpdateUICoroutine());
@@ -26,7 +32,18 @@ public class PlayerHealth : Health
             Death();
         }
         _damageFlash.TriggerMaterialChange();
+        
+        _invincibility = true;
+        gameObject.layer = LayerMask.NameToLayer("PlayerInv");
+        Invoke(nameof(DisableInvincibility), _invincibilityDuration);
+        
         StartCoroutine(PauseTime());
+    }
+
+    private void DisableInvincibility()
+    {
+        _invincibility = false;
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     private IEnumerator PauseTime()

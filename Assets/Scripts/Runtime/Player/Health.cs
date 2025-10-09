@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth;
+    [SerializeField] protected int _maxHealth;
     [SerializeField] protected Slider _slider;
-    [SerializeField] private float _healthBarUpdateDeltaTime;
-    [SerializeField] private float _healthBarUpdateRate;
-
+    [SerializeField] protected float _healthBarUpdateDeltaTime;
+    [SerializeField] protected float _healthBarUpdateRate;
+    public bool Invaulnreble;
     protected int _currentHealth;
 
     protected virtual void Start()
@@ -17,11 +17,12 @@ public class Health : MonoBehaviour
         _currentHealth = _maxHealth;
         _slider.maxValue = _maxHealth;
         _slider.value = _currentHealth;
-        
-        
     }
     public virtual void TakeDamage(int damage)
     {
+        if(Invaulnreble)
+            return;
+        
         _currentHealth -= damage;
         StopAllCoroutines();
         StartCoroutine(UpdateUICoroutine());
@@ -37,7 +38,7 @@ public class Health : MonoBehaviour
         
     }
 
-    protected IEnumerator UpdateUICoroutine()
+    protected virtual IEnumerator UpdateUICoroutine()
     {
         while (_slider.value > _currentHealth)
         {
@@ -45,4 +46,5 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(_healthBarUpdateDeltaTime);
         }
     }
+    public void SetInvaulnreble(bool invaulnreble) => Invaulnreble = invaulnreble;
 }

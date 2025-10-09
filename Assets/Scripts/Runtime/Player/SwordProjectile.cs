@@ -7,7 +7,6 @@ public class SwordProjectile : MonoBehaviour
     [SerializeField] private float _rotateSpeed;
     private Rigidbody2D _rigidbody;
     private float _speed;
-    private float _updateTime;
     private PlayerShoot _sender;
     private float _maxTime;
     private bool _canReturn;
@@ -16,7 +15,6 @@ public class SwordProjectile : MonoBehaviour
     public void Embark(float speed, float updateTime, Vector3 target,float maxTime,int damage, PlayerShoot sender)
     {
         _speed = speed;
-        _updateTime = updateTime;
         _sender = sender;
         _maxTime = maxTime;
         _damage = damage;
@@ -46,7 +44,6 @@ public class SwordProjectile : MonoBehaviour
         }
 
     }
-
     private void FixedUpdate()
     {
         var rot = transform.localEulerAngles;
@@ -70,7 +67,14 @@ public class SwordProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.TryGetComponent<BossHealth>(out var bossHealth))
-            bossHealth.TakeDamage(_damage);
+        if (other.TryGetComponent<BossHealth>(out var bossHealth))
+        {
+            if (bossHealth.Invaulnreble)
+            {
+                _rigidbody.linearVelocity = Vector2.Lerp(-_rigidbody.linearVelocity, Vector2.up * _speed, 0.75f);                
+            }
+            else
+                bossHealth.TakeDamage(_damage);
+        }
     }
 }

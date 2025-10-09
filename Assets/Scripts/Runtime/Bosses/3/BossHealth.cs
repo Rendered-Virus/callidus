@@ -6,10 +6,16 @@ using UnityEngine.UI;
 
 public class BossHealth : Health
 {
-    [SerializeField] private float _healthBarFadeDuration;
+    [SerializeField] protected float _healthBarFadeDuration;
     protected override void Start()
     {
         base.Start();
         GameManager.Instance.OnFightBegin.AddListener(()=> _slider.GetComponent<CanvasGroup>().DOFade(1,_healthBarFadeDuration));
+    }
+
+    protected override void Death()
+    {
+        base.Death();
+        Destroy(gameObject);
     }
 }

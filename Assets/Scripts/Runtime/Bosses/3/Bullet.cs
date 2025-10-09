@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
    public void Embark(Vector3 velocity, int damage)
    {
       GetComponent<Rigidbody2D>().linearVelocity =  velocity;
+      transform.right = velocity;
       _damage = damage;
    }
 

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class GameManager : Singleton<GameManager>
 {
    public UnityEvent OnFightBegin;
+   public UnityEvent OnFightWin;
    public bool FightBegin = false;
    private void Start()
    {
