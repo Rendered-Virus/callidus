@@ -9,10 +9,14 @@ public class six : MonoBehaviour
     [SerializeField] private int _hitDamage;
     private Rigidbody2D _rigidbody;
     private bool _canRotate;
+    private BossHealth _bossHealth;
+
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _bossHealth = GetComponent<BossHealth>();
+        _bossHealth.OnDeath.AddListener(()=> Destroy(gameObject));
         GameManager.Instance.OnFightBegin.AddListener(ShootSelf);
     }
 

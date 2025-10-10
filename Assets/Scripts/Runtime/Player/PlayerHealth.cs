@@ -10,7 +10,6 @@ public class PlayerHealth : Health
 
     [SerializeField] private float _invincibilityDuration;
     
-    private DamageFlash _damageFlash;
     private bool _invincibility;
 
     protected override void Start()
@@ -45,7 +44,7 @@ public class PlayerHealth : Health
         _invincibility = false;
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
-
+    
     private IEnumerator PauseTime()
     {
         Time.timeScale = 0;
@@ -57,5 +56,10 @@ public class PlayerHealth : Health
             yield return new WaitForSecondsRealtime(_timeRestoreDeltaTime);
         }
         Time.timeScale = 1;
+    }
+
+    protected override void Death()
+    {
+        GameManager.Instance.PlayerDeath();
     }
 }

@@ -22,8 +22,14 @@ public class Three : MonoBehaviour
    private Rigidbody2D _rigidbody;
    private Animator _animator;
    private TrailRenderer _trailRenderer;
+   private BossHealth _bossHealth;
+
    private void Start()
    {
+      
+      _bossHealth = GetComponent<BossHealth>();
+      _bossHealth.OnDeath.AddListener(StopAllCoroutines);
+      
       _trailRenderer = GetComponentInChildren<TrailRenderer>();
       _animator = GetComponent<Animator>();
       _rigidbody = GetComponent<Rigidbody2D>();

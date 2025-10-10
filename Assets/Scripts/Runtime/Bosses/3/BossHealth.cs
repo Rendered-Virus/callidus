@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BossHealth : Health
 {
     [SerializeField] protected float _healthBarFadeDuration;
+    public UnityEvent OnDeath; 
     protected override void Start()
     {
         base.Start();
@@ -16,6 +18,6 @@ public class BossHealth : Health
     protected override void Death()
     {
         base.Death();
-        Destroy(gameObject);
+        OnDeath.Invoke();
     }
 }

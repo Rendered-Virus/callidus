@@ -427,8 +427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bed18382f777a47a4878fd74caa5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _introRunTime: 0.5
-  _introEndPointX: -10
+  _introRunTime: 1
+  _introEndPointX: 0
 --- !u!1 &4976510005608360691
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MC
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 04ff06546afdd6c47b20bb33e092bca0, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -703,9 +707,11 @@ MonoBehaviour:
   _slider: {fileID: 4130708072909422810}
   _healthBarUpdateDeltaTime: 0.01
   _healthBarUpdateRate: 50
+  Invaulnreble: 0
   _pauseDuration: 0.2
   _timeRestoreDuration: 0.3
   _timeRestoreDeltaTime: 0.05
+  _invincibilityDuration: 0.2
 --- !u!1 &7491950102173872193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 04ff06546afdd6c47b20bb33e092bca0, type: 3}

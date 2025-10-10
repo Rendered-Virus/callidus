@@ -21,7 +21,7 @@ public class seven : MonoBehaviour
     [SerializeField] private float _throwStrength;
     [SerializeField] private float _rotationSpeed;
 
-    private Health _health;
+    private BossHealth _bossHealth;
     private float _target;
     private bool _walking;
     private float _timeRemaining;
@@ -29,7 +29,10 @@ public class seven : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _health = GetComponent<Health>();    
+        _bossHealth = GetComponent<BossHealth>();    
+        
+        _bossHealth = GetComponent<BossHealth>();
+        _bossHealth.OnDeath.AddListener(()=> Destroy(gameObject));
         
         GameManager.Instance.OnFightBegin.AddListener(()=>
         {
@@ -39,7 +42,7 @@ public class seven : MonoBehaviour
     }
     private IEnumerator BeginWalk()
     {
-        _health.SetInvaulnreble(true);
+        _bossHealth.SetInvaulnreble(true);
         _knives.gameObject.SetActive(true);
         _walking = true;
 
@@ -57,7 +60,7 @@ public class seven : MonoBehaviour
             yield return null;
         }
         
-        _health.SetInvaulnreble(false);
+        _bossHealth.SetInvaulnreble(false);
         _knives.gameObject.SetActive(false);
         _walking = false;
      

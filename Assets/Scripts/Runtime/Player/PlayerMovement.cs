@@ -32,7 +32,12 @@ public class PlayerMovement : MonoBehaviour
       _rigidbody2D = GetComponent<Rigidbody2D>();
       _animator.SetBool("Begin",true);
    }
-   
+
+   private void Start()
+   {
+      GameManager.Instance.OnFightLose.AddListener(()=> this.enabled = false);
+   }
+
    private void FixedUpdate()
    {
       IsGrounded();

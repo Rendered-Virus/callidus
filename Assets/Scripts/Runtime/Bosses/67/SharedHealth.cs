@@ -46,6 +46,8 @@ public class SharedHealth : BossHealth
             
             Death();
         }
+        _damageFlash.TriggerMaterialChange();
+
     }
     private void SuperDeath()
     {

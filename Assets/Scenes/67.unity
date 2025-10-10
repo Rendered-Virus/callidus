@@ -2584,10 +2584,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5443005771039486102, guid: 098a46ceaabfa1a4183d9ca4e534c3cf, type: 3}
-      propertyPath: m_BlockingMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2705,28 +2701,12 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1459187460}
-    - target: {fileID: 6762697787760716033, guid: ac322ce2d7e2b5f458ec9dc87e7f7fe4, type: 3}
-      propertyPath: _invincibilityDuration
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 6869516063114844491, guid: ac322ce2d7e2b5f458ec9dc87e7f7fe4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6869516063114844491, guid: ac322ce2d7e2b5f458ec9dc87e7f7fe4, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6968698861636910964, guid: ac322ce2d7e2b5f458ec9dc87e7f7fe4, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8407116561275362475, guid: ac322ce2d7e2b5f458ec9dc87e7f7fe4, type: 3}
-      propertyPath: _introRunTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8407116561275362475, guid: ac322ce2d7e2b5f458ec9dc87e7f7fe4, type: 3}
-      propertyPath: _introEndPointX
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3055,45 +3035,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1315559446569258163, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3379333771082081466, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
       propertyPath: m_Name
       value: Cam-Display Setup
-      objectReference: {fileID: 0}
-    - target: {fileID: 3447779224690077991, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3447779224690077991, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99025595
-      objectReference: {fileID: 0}
-    - target: {fileID: 3447779224690077991, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3447779224690077991, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.13925952
-      objectReference: {fileID: 0}
-    - target: {fileID: 3447779224690077991, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3447779224690077991, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 16.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 3667202595868683607, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 983
-      objectReference: {fileID: 0}
-    - target: {fileID: 7377685599303031559, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8892585952286108990, guid: c7e3bf36a830c1640af3ccfce61dca05, type: 3}
       propertyPath: m_LocalPosition.x

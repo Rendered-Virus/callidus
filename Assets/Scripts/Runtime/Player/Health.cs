@@ -11,12 +11,14 @@ public class Health : MonoBehaviour
     [SerializeField] protected float _healthBarUpdateRate;
     public bool Invaulnreble;
     protected int _currentHealth;
+    protected DamageFlash _damageFlash;
 
     protected virtual void Start()
     {
         _currentHealth = _maxHealth;
         _slider.maxValue = _maxHealth;
         _slider.value = _currentHealth;
+        _damageFlash = GetComponent<DamageFlash>();
     }
     public virtual void TakeDamage(int damage)
     {
@@ -31,6 +33,8 @@ public class Health : MonoBehaviour
         {
             Death();
         }
+        _damageFlash.TriggerMaterialChange();
+
     }
 
     protected virtual void Death()
