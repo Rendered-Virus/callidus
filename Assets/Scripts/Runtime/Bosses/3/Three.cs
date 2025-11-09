@@ -28,7 +28,14 @@ public class Three : MonoBehaviour
    {
       
       _bossHealth = GetComponent<BossHealth>();
-      _bossHealth.OnDeath.AddListener(StopAllCoroutines);
+      _bossHealth.OnDeath.AddListener(()=>
+      {
+         StopAllCoroutines();
+         _animator.enabled = false;
+         transform.DORotate(new Vector3(-165, 0, 0), 1f);
+         GetComponent<Collider2D>().enabled = false;
+         _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+      });
       
       _trailRenderer = GetComponentInChildren<TrailRenderer>();
       _animator = GetComponent<Animator>();

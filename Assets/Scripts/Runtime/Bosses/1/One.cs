@@ -20,7 +20,11 @@ public class One : MonoBehaviour
    private void Start()
    {
        _bossHealth = GetComponent<BossHealth>();
-       _bossHealth.OnDeath.AddListener(StopAllCoroutines);
+       _bossHealth.OnDeath.AddListener(()=>
+       {
+           StopAllCoroutines();
+           transform.DORotate(new Vector3(-165, 0, 0), 1f);
+       });
        GameManager.Instance.OnFightBegin.AddListener(TeleportAway);
    }
 

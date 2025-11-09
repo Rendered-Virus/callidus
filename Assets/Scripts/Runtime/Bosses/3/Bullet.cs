@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
       GetComponent<Rigidbody2D>().linearVelocity =  velocity;
       transform.right = velocity;
       _damage = damage;
+      Destroy(gameObject,10f);
    }
 
    private void OnTriggerEnter2D(Collider2D other)

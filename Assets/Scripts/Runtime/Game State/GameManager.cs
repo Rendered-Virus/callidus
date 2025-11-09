@@ -42,10 +42,13 @@ public class GameManager : Singleton<GameManager>
 
    public void EnableRestart()
    {
-      _restartText.DOFade(.2f, _fadeDuration).OnComplete(()=> _canRestart = true);
+      _canRestart = true;
+      _restartText.DOFade(.2f, _fadeDuration);
    }
    public void LoadNextScene()
    {
+      if(SceneManager.GetActiveScene().buildIndex >= 4) return;
+      
       _fade.DOFade(1, _fadeDuration).OnComplete(() =>
       {
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

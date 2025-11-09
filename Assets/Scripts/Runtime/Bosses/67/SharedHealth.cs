@@ -21,6 +21,7 @@ public class SharedHealth : BossHealth
 
     protected override void Start()
     {
+        _damageFlash = GetComponent<DamageFlash>();
         _currentHealth = _maxHealth;
         _sharedHealthBar.CurrentHealth = _sharedHealthBar.MaxHealth;
         _slider.maxValue = _sharedHealthBar.MaxHealth;
@@ -51,6 +52,6 @@ public class SharedHealth : BossHealth
     }
     private void SuperDeath()
     {
-        print("All DEAD");
+        GameManager.Instance.OnFightWin.Invoke();
     }
 }

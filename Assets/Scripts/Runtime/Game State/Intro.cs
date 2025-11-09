@@ -34,6 +34,13 @@ public class Intro : MonoBehaviour
         
         GameManager.Instance.LoadNextScene();
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+            GameManager.Instance.LoadNextScene();
+            
+    }
 }
 
 [Serializable]
